@@ -1,56 +1,90 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import styled from 'styled-components';
+import '../component.css'; 
 const marked = require("marked");
 
-const InputArea = styled.textarea`
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 4rem;
-    height:230px; 
-    border: 1px solid #888; 
-    width: 80%;
+const Toolbar = styled.div`
+${'' /* background-color: white; */}
+height: 3rem;
 `
 
-const OutputDiv = styled.div`
-background-color: blue;
-
+const BodyContainer = styled.div `
+  background: linear-gradient(to right, rgba(0,0,0,0), teal), linear-gradient(to right, rgba(255,0,100,.3), rgba(255,100,127,.2)), linear-gradient(to top right, yellow, rgba(0,0,0,0)), radial-gradient(closest-corner at 20% 80%, yellow, red);
+  background-attachment: fixed;
+  display: flex;
+  padding-top: 4rem;
+  text-align: center;
+  padding-bottom : 10rem;
+  min-width: 500px;
 `
 
-const ContainerDiv = styled.div`
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+const Container = styled.div `
+display: flex;
+flex-direction: column;
+float: left;
+width: 50%;
+${'' /* border: 5px solid red; */}
+margin: 2rem;
 `
+const editorStyle = {
+  boxSizing: "border-box",
+  height: "50%",
+  display: "flex",
+  width: "100%",
+  margin: "0 auto",
+  width: "100%",
+  paddingLeft: "20px",
+  border: "none"
+  
+}
 
-marked.setOptions({breaks:true})
+const previewStyle = {
+  textAlign: "left",
+  margin: "30px"
+}
 
-const initialText = '# Header\n## Subheader\n[links](https://www.freecodecamp.com)\n' +
-'This is inline `code`\n```\n // This is a code Block:\n```\n' +
-'1. First ordered list item\n2. Another item\n⋅⋅* Unordered sub-list.\n' +
-'> Block Quotes!\n![React Logo w/ Text](https://goo.gl/Umyytc)\n\n**bolded text**';
+marked.setOptions({
+  breaks: true
+});
 
-export class MarkdownPreviewer extends React.Component{
-  componentDidMount() {
-    document.getElementById("editor").value = initialText;
-    this.props.inputChanged(document.getElementById("editor").value);
-  }
+const Preview = props => {
+  return (
+    <div style={previewStyle}
+      dangerouslySetInnerHTML={{
+        __html: marked(props.input)
+      }}
+      id='preview'
+    />
+  );
+};
 
-  componentDidUpdate() {
-    document.getElementById("preview").innerHTML = this.props.text;
-  }
+const Editor = props => {
+  return (
+    <textarea style={editorStyle}
+    onChange={props.onChange}
+    value= {props.input}
+      id='editor'
+    />
+  );
+};
 
-
-
-  render() {
-    return(
-      <ContainerDiv>
-        <InputArea id="editor" onChange={() => this.props.inputChanged(document.getElementById("editor").value)} />
-
-        <OutputDiv id="preview" /> 
-      </ContainerDiv>
-
-    );
-  }
+export class MarkdownPreviewer extends React.Component {    
+    render() {
+        return ( 
+        <BodyContainer>  
+        <Container>
+          <Toolbar><h1>Write in this!</h1>
+          </Toolbar>         
+          <Editor input={this.props.text} onChange = {() => this.props.inputChanged(document.getElementById("editor").value)}/>
+        </Container>
+        <Container>
+          <Toolbar>
+          <h1>Check out what happens here!</h1>
+          </Toolbar>
+          <Preview input={this.props.text} />
+        </Container>
+        </BodyContainer>
+        );
+    }
 }
