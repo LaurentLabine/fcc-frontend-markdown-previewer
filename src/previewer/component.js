@@ -12,7 +12,7 @@ marked.setOptions({
 //Styled-Components Elements definition
 const ContainerHeader = styled.header `
     padding-top: 3rem;
-    color: #9955bb;
+    color: #8d94ba;
     text-shadow: -1px 0 0 #000000, 1px 1px 0 #000000, 2px -1px 0 #000000, 3px 0 0 #000000;
     font-size: 56px;
 `
