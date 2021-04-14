@@ -4,11 +4,17 @@ import styled from 'styled-components';
 import '../component.css'; 
 const marked = require("marked");
 
+//Marked Configuration
+marked.setOptions({
+  breaks: true
+});
+
+//Styled-Components Elements definition
 const ContainerHeader = styled.header `
-    color: #5D26C5;
+    padding-top: 3rem;
+    color: #9955bb;
     text-shadow: -1px 0 0 #000000, 1px 1px 0 #000000, 2px -1px 0 #000000, 3px 0 0 #000000;
-    font-size: 46px;
-    overflow: hidden;
+    font-size: 56px;
 `
 
 const BodyContainer = styled.div `
@@ -27,6 +33,7 @@ float: left;
 width: 50%;
 margin: 2rem;
 `
+//Style Objects
 const editorStyle = {
   boxSizing: "border-box",
   height: "50%",
@@ -35,8 +42,8 @@ const editorStyle = {
   margin: "0 auto",
   paddingLeft: "20px",
   border: "none",
-  marginTop: "4rem"
-  
+  marginTop: "4rem",
+  resize: "none"
 }
 
 const previewStyle = {
@@ -49,18 +56,15 @@ const previewStyle = {
   border: "1px solid black"
 }
 
-marked.setOptions({
-  breaks: true
-});
 
+//Functional Components
 const Preview = props => {
   return (
     <div style={previewStyle}
       dangerouslySetInnerHTML={{
         __html: marked(props.input)
       }}
-      id='preview'
-    />
+      id='preview'/>
   );
 };
 
@@ -69,22 +73,23 @@ const Editor = props => {
     <textarea style={editorStyle}
     onChange={props.onChange}
     value= {props.input}
-      id='editor'
-    />
+      id='editor'/>
   );
 };
 
+//Stateful Component
 export class MarkdownPreviewer extends React.Component {    
     render() {
         return ( 
         <BodyContainer>  
-        <Container><ContainerHeader class="castellar">Markup goes Here!</ContainerHeader>        
-          <Editor input={this.props.text} onChange = {() => this.props.inputChanged(document.getElementById("editor").value)}/>
-        </Container>
-        <Container>
-          <ContainerHeader class="castellar">Check this out!</ContainerHeader>
-          <Preview input={this.props.text} />
-        </Container>
+          <Container>
+            <ContainerHeader class="castellar">Markup Here!</ContainerHeader>        
+            <Editor input={this.props.text} onChange = {() => this.props.inputChanged(document.getElementById("editor").value)}/>
+          </Container>
+          <Container>
+            <ContainerHeader class="castellar">Magical Output</ContainerHeader>
+            <Preview input={this.props.text} />
+          </Container>
         </BodyContainer>
         );
     }
