@@ -1,6 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
+body {
+    margin-top: 0;
 }
 
 table {
@@ -26,6 +25,13 @@ pre {
 }
 
 img {
-    height: 20px;
-    background: transparent !important;
+    height: 200px;
+}
+
+h1 {
+    border-bottom: 2px solid black;
+}
+
+h2 {
+    border-bottom: 1px solid black;
 }

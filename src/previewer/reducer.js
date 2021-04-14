@@ -42,7 +42,9 @@ And here. | Okay. | I think we get it.
 1. Use just 1s if you want!
 1. And last but not least, let's not forget embedded images:
 
-![React Logo w/ Text](https://goo.gl/Umyytc)
+Powered by
+
+![React Logo w/ Text](https://assets.website-files.com/5d3152346d95065922960b3a/5e3a1ff80e42b09129d3cacd_React_logo.png)
 `;
 
 export const markdownReducer = function(state = { type: INPUT_UPDATED, text: initialText, editorMaximized: false, outputMaximized: false }, action) {
