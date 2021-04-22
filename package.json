@@ -2,7 +2,7 @@
     "name": "fcc-markdown-previewer",
     "version": "0.1.0",
     "private": true,
-    "homepage": "http://LaurentLabine.github.io/fcc-markdown-previewer",
+    "homepage": "http://LaurentLabine.github.io/fcc-frontend-markdown-previewer",
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.35",
         "@fortawesome/free-brands-svg-icons": "^5.15.3",
