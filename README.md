@@ -14,4 +14,4 @@ It answers the technical requirements as stated in the challenge located here: h
 
 ## Possible Improvements
 
-Future possible improvements could include implementing using React Hooks and add a full screen visualization functionality. 
+Future possible improvements could include implementing using React Hooks and add a full-screen visualization functionality. 
