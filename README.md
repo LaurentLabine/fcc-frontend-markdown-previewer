@@ -2,6 +2,8 @@
 
 See the result here: https://laurentlabine.github.io/fcc-frontend-markdown-previewer/
 
+Thumbnail available here : https://user-images.githubusercontent.com/20836468/118486478-f6589d00-b719-11eb-8e3d-90b1a79323bf.png
+
 I built this project as part of freeCodeCamp's curriculum to learn and practice Responsive Web Design.
 
 ## Technologies
